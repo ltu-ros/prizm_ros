@@ -1,0 +1,5 @@
+<launch>
+    <!-- l2bot node -->
+    <node name="l2bot" pkg="l2bot" type="l2bot" />
+
+</launch>
