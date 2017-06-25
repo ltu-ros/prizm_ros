@@ -15,21 +15,21 @@ Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 If you haven't already, create a catkin workspace.
 
 ```
-$ mkdir -p ~/autoev/src
-$ cd ~/autoev/src
+$ mkdir -p ~/ltumcs_autoev/src
+$ cd ~/ltumcs_autoev/src
 ```
 
 Clone this repository into the `src` directory.
 
 ```
-~/autoev/src$ git clone https://github.com/LTU-AutoEV/l2bot.git
+~/ltumcs_autoev/src$ git clone https://github.com/LTU-AutoEV/l2bot.git
 ```
 
 Run `catkin_make` from the workspace directory.
 
 ```
-~/autoev/src$ cd ..
-~/autoev$ catkin_make
+~/ltumcs_autoev/src$ cd ..
+~/ltumcs_autoev$ catkin_make
 ```
 
 # Topics
