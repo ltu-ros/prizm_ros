@@ -1,4 +1,36 @@
-Interface package for converting the output of '/rb_drive/rb_drive/twist_cmd' to a motor controller command and sending it to an L2Bot.
+#l2bot
+
+ROS interface package for converting the output of
+`/rb_drive/rb_drive/twist_cmd` to a motor controller command and sending it to
+an L2Bot.
+
+# Installation
+
+## Arduino
+
+Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software). Load the 'ardunio/L2Bot_MC' sketch onto the L2Bot arduino.
+
+## ROS
+
+If you haven't already, create a catkin workspace.
+
+```
+$ mkdir -p ~/autoev/src
+$ cd ~/autoev/src
+```
+
+Clone this repository into the `src` directory.
+
+```
+~/autoev/src$ git clone https://github.com/LTU-AutoEV/gem_core.git
+```
+
+Run `catkin_make` from the workspace directory.
+
+```
+~/autoev/src$ cd ..
+~/autoev$ catkin_make
+```
 
 # Topics
 
