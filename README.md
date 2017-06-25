@@ -22,7 +22,7 @@ $ cd ~/autoev/src
 Clone this repository into the `src` directory.
 
 ```
-~/autoev/src$ git clone https://github.com/LTU-AutoEV/gem_core.git
+~/autoev/src$ git clone https://github.com/LTU-AutoEV/l2bot.git
 ```
 
 Run `catkin_make` from the workspace directory.
