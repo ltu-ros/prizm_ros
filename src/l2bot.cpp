@@ -97,7 +97,7 @@ void L2Bot::driveCB(const geometry_msgs::Twist& twist)
         Bspeed *= mux;
     }
 
-    ROS_ERROR_STREAM("A/B: " << Aspeed << " " << Bspeed);
+    // ROS_ERROR_STREAM("A/B: " << Aspeed << " " << Bspeed);
 
     t.data = make_vec(Aspeed, Adir, Bspeed, Bdir);
     pub_.publish(t);
