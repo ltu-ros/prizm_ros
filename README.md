@@ -32,6 +32,13 @@ Run `catkin_make` from the workspace directory.
 ~/ltumcs_autoev$ catkin_make
 ```
 
+Install dependencies
+
+```
+~/ltumcs_autoev$ rosdep install l2bot
+```
+
+
 # Topics
 
 ## Published topics for internal use
