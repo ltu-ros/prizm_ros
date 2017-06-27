@@ -1,6 +1,6 @@
 /*
  * L2Bot ROS Motor Controller
- * Reads input from "L2Bot/mc"
+ * Reads input from "l2bot/motor_cmd"
  */
 
 #include <ros.h>
@@ -52,7 +52,7 @@ void messageCb( const std_msgs::UInt16& toggle_msg){
     // If the speed is 0, stop the motor
     motor1.run(RELEASE);
   }
-  else 
+  else
   {
     // Set the speed of the motor
     motor1.setSpeed(motor_speed);
@@ -76,7 +76,7 @@ void messageCb( const std_msgs::UInt16& toggle_msg){
     // If the speed is 0, stop the motor
     motor2.run(RELEASE);
   }
-  else 
+  else
   {
     // Set the speed of the motor
     motor2.setSpeed(motor_speed);
@@ -91,20 +91,17 @@ void messageCb( const std_msgs::UInt16& toggle_msg){
   }
 }
 
-ros::Subscriber<std_msgs::UInt16> sub("L2Bot/mc", &messageCb );
+ros::Subscriber<std_msgs::UInt16> sub("l2bot/motor_cmd", &messageCb);
 
 void setup()
-{ 
+{
   pinMode(13, OUTPUT);
   nh.initNode();
   nh.subscribe(sub);
-
-  //motor1.setSpeed(200);
-  //motor1.run(FORWARD);
 }
 
 void loop()
-{  
+{
   nh.spinOnce();
   delay(1);
 }

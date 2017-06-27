@@ -7,7 +7,7 @@
  * Interface node to convert from rb_drive to gem data
  *
  * Subscribe: Twist on "/rb_drive/rb_drive/twist_cmd"
- * Publish:   UInt16 on "/L2Bot/mc"
+ * Publish:   UInt16 on "~/motor_cmd"
  */
 
 class L2Bot {
@@ -27,16 +27,23 @@ private:
     ros::NodeHandle nh_;
     ros::Publisher pub_;
     ros::Subscriber drive_sub_;
+
+    float turn_multip_;
 };
 
 
-L2Bot::L2Bot()
+L2Bot::L2Bot() : nh_{"~"}
 {
-    // Publish a motor controller instruction in the L2Bot namespace
-    pub_ = nh_.advertise<std_msgs::UInt16>("/L2Bot/mc", 1);
+    // Publish a motor controller instruction in the l2bot namespace
+    pub_ = nh_.advertise<std_msgs::UInt16>("motor_cmd", 1);
 
-    drive_sub_ = nh_.subscribe("/rb_drive/twist_cmd",
-          1, &L2Bot::driveCB, this);
+    drive_sub_ = nh_.subscribe("/rb_drive/rb_drive/twist_cmd",
+                        1, &L2Bot::driveCB, this);
+
+    if (!nh_.getParam("/l2bot/turn_multip", turn_multip_)) {
+        ROS_ERROR_STREAM("l2bot: could not load param '/l2bot/turn_multip'");
+        exit(0);
+    }
 }
 
 void L2Bot::driveCB(const geometry_msgs::Twist& twist)
@@ -57,10 +64,9 @@ void L2Bot::driveCB(const geometry_msgs::Twist& twist)
     bool Adir = true;
     bool Bdir = true;
 
-    ROS_INFO_STREAM("SENDING" << Aspeed << " " << Bspeed);
 
-    Aspeed -= twist.angular.z;
-    Bspeed += twist.angular.z;
+    Aspeed -= twist.angular.z*turn_multip_;
+    Bspeed += twist.angular.z*turn_multip_;
 
     Aspeed *= 255.0f/3.0f;
     Bspeed *= 255.0f/3.0f;
@@ -90,6 +96,8 @@ void L2Bot::driveCB(const geometry_msgs::Twist& twist)
         Aspeed *= mux;
         Bspeed *= mux;
     }
+
+    ROS_ERROR_STREAM("A/B: " << Aspeed << " " << Bspeed);
 
     t.data = make_vec(Aspeed, Adir, Bspeed, Bdir);
     pub_.publish(t);
