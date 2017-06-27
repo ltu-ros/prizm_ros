@@ -1,5 +1,17 @@
 <launch>
-    <!-- l2bot node -->
-    <node name="l2bot" pkg="l2bot" type="l2bot" />
+
+    <group ns="l2bot">
+        <!-- Load params -->
+        <rosparam command="load" file="$(find l2bot)/config/params.yaml" />
+
+        <!-- l2bot node -->
+        <node name="l2bot" pkg="l2bot" type="l2bot" />
+
+        <!-- Serial node to communicate with arduino -->
+        <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
+            <param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
+            <param name="baud" value="57600"/>
+        </node>
+    </group>
 
 </launch>
