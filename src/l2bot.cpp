@@ -40,9 +40,11 @@ L2Bot::L2Bot() : nh_{"~"}
     drive_sub_ = nh_.subscribe("/rb_drive/rb_drive/twist_cmd",
                         1, &L2Bot::driveCB, this);
 
+    turn_multip_ = 5.0f; //Default value
     if (!nh_.getParam("/l2bot/turn_multip", turn_multip_)) {
-        ROS_ERROR_STREAM("l2bot: could not load param '/l2bot/turn_multip'");
-        exit(0);
+        ROS_INFO_STREAM("l2bot: could not load param '/l2bot/turn_multip'");
+        ROS_INFO_STREAM("l2bot: using default value: " << turn_multip_);
+        ROS_INFO_STREAM("l2bot: to load params use 'roslaunch l2bot l2bot.launch'");
     }
 }
 
