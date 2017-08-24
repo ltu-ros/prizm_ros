@@ -1,0 +1,41 @@
+<h1 id="l2bot">l2bot</h1>
+<p>ROS interface package for converting the output of <code>/rb_drive/rb_drive/twist_cmd</code> to a motor controller command and sending it to an L2Bot.</p>
+<h1 id="installation">Installation</h1>
+<p>If you haven't already, create a catkin workspace.</p>
+<pre><code>$ mkdir -p ~/l2bot_ws/src
+$ cd ~/l2bot_ws/src</code></pre>
+<h2 id="arduino">Arduino</h2>
+<p><em>Detailed instructions <a href="http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup">here</a>.</em></p>
+<p>Download and install the <a href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a>.</p>
+<p>Install ROS Support. Make sure to replace <code>indigo</code> with the correct ROS version name.</p>
+<pre><code>sudo apt-get install ros-indigo-rosserial-arduino
+sudo apt-get install ros-indigo-rosserial
+</code></pre>
+<p>Clone the serial drivers</p>
+<pre><code>cd ~/l2bot_ws/src
+git clone https://github.com/ros-drivers/rosserial.git
+cd ~/l2bot_ws
+catkin_make</code></pre>
+<p>In the steps below, <code>&lt;sketchbook&gt;</code> is the directory where the Linux Arduino environment saves your sketches. Typically this is a directory called sketchbook in your home directory.</p>
+<pre><code>cd &lt;sketchbook&gt;/libraries
+rm -rf ros_lib
+rosrun rosserial_arduino make_libraries.py .</code></pre>
+<p>Restart the Arduino IDE. After restarting, you should see <code>ros_lib</code> listed under examples.</p>
+<div class="figure">
+<img src="http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup?action=AttachFile&amp;do=get&amp;target=arduino_ide_examples_screenshot.png" alt="ros_lib examples" />
+<p class="caption">ros_lib examples</p>
+</div>
+<p>Load the 'ardunio/L2Bot_MC' sketch onto the L2Bot arduino.</p>
+<h2 id="ros">ROS</h2>
+<p>Clone this repository into the <code>src</code> directory.</p>
+<pre><code>~/l2bot_ws/src$ git clone https://github.com/LTU-AutoEV/l2bot.git</code></pre>
+<p>Run <code>catkin_make</code> from the workspace directory.</p>
+<pre><code>~/l2bot_ws/src$ cd ..
+~/l2bot_ws$ catkin_make</code></pre>
+<p>Install dependencies</p>
+<pre><code>~/l2bot_ws$ rosdep install l2bot</code></pre>
+<h1 id="topics">Topics</h1>
+<h2 id="published-topics-for-internal-use">Published topics for internal use</h2>
+<ul>
+<li><code>std_msgs::UInt16</code> on <strong>/L2Bot/mc</strong>: Motor controller instruction for the l2bot</li>
+</ul>
