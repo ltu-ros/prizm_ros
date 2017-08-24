@@ -10,6 +10,8 @@
  * Publish:   UInt16 on "~/motor_cmd"
  */
 
+#define TWIST_INPUT "/rb_drive/rb_drive/twist_cmd"
+
 class L2Bot {
 public:
     L2Bot();
@@ -37,9 +39,9 @@ L2Bot::L2Bot() : nh_{"~"}
     // Publish a motor controller instruction in the l2bot namespace
     pub_ = nh_.advertise<std_msgs::UInt16>("motor_cmd", 1);
 
-    drive_sub_ = nh_.subscribe("/rb_drive/rb_drive/twist_cmd",
-                        1, &L2Bot::driveCB, this);
+    drive_sub_ = nh_.subscribe(TWIST_INPUT, 1, &L2Bot::driveCB, this);
 
+    // Load params
     turn_multip_ = 5.0f; //Default value
     if (!nh_.getParam("/l2bot/turn_multip", turn_multip_)) {
         ROS_INFO_STREAM("l2bot: could not load param '/l2bot/turn_multip'");
@@ -52,9 +54,7 @@ void L2Bot::driveCB(const geometry_msgs::Twist& twist)
 {
     std_msgs::UInt16 t;
 
-    if(
-        std::abs(twist.linear.x) > 3 ||
-        std::abs(twist.angular.z) > 2)
+    if(std::abs(twist.linear.x) > 3 || std::abs(twist.angular.z) > 2)
     {
         t.data = make_vec(0, true, 0, true);
         pub_.publish(t);
@@ -99,6 +99,7 @@ void L2Bot::driveCB(const geometry_msgs::Twist& twist)
         Bspeed *= mux;
     }
 
+    // Output motor speeds
     // ROS_ERROR_STREAM("A/B: " << Aspeed << " " << Bspeed);
 
     t.data = make_vec(Aspeed, Adir, Bspeed, Bdir);
