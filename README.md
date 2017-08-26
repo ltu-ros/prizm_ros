@@ -14,42 +14,9 @@ $ cd ~/l2bot_ws/src
 
 ## Arduino
 
-*Detailed instructions [here](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup).*
-
 Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 
-Install ROS Support. Make sure to replace `indigo` with the correct ROS version name.
-
-```
-sudo apt-get install ros-indigo-rosserial-arduino
-sudo apt-get install ros-indigo-rosserial
-
-```
-
-Clone the serial drivers
-
-```
-cd ~/l2bot_ws/src
-git clone https://github.com/ros-drivers/rosserial.git
-cd ~/l2bot_ws
-catkin_make
-```
-
-In the steps below, `<sketchbook>` is the directory where the Linux Arduino environment saves your sketches. Typically this is a directory called sketchbook in your home directory.
-
-
-```
-cd <sketchbook>/libraries
-rm -rf ros_lib
-rosrun rosserial_arduino make_libraries.py .
-```
-
-Restart the Arduino IDE. After restarting, you should see `ros_lib` listed under examples.
-
-![ros_lib examples](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup?action=AttachFile&do=get&target=arduino_ide_examples_screenshot.png)
-
-Load the 'ardunio/L2Bot_MC' sketch onto the L2Bot arduino.
-
+Install ROS Support: [Arduino Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ## ROS
 
@@ -71,6 +38,14 @@ Install dependencies
 
 ```
 ~/l2bot_ws$ rosdep install l2bot
+```
+
+You may need to change the ID of the arduino in the launch file. To do this, open ~/l2bot_ws/src/l2bot/launch/l2bot.launch and change the line below.
+
+```
+<!-- Change the 'value' parameter of the line below -->
+<!-- run `ls /dev/serial/bi-id` to get the id of your Arduino -->
+<param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
 ```
 
 
