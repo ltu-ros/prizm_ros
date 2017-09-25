@@ -37,7 +37,7 @@ Run `catkin_make` from the workspace directory.
 Install dependencies
 
 ```
-~/l2bot_ws$ rosdep install l2bot
+~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y 
 ```
 
 You may need to change the ID of the arduino in the launch file. To do this, open ~/l2bot_ws/src/l2bot/launch/l2bot.launch and change the line below.
