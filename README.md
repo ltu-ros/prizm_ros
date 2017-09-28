@@ -14,9 +14,10 @@ $ cd ~/l2bot_ws/src
 
 ## Arduino
 
-  2. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
+  1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
   2. Open the IDE and close it once it has finished launching. (This creates all the scketchbook directories on your system)
   3. Install ROS Support (see below)
+  4. Install `AFMotor` driver: [AFMotor](https://learn.adafruit.com/adafruit-motor-shield/library-install)
 
 ### Installing ROS Support
 
@@ -81,6 +82,14 @@ For example, yours may be:
 <param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
 ```
 
+## Load The Interface onto the Arduino
+
+  1. Open the Arduino IDE
+  2. File > Open
+    - Open the file `d` located at ` ` 
+  3. Plug in the Arduino
+  4. Tools -> Port -> (Select your arduino device)
+  5. Upload to arduino
 # Topics
 
 ## Published topics for internal use
