@@ -60,14 +60,26 @@ Install dependencies
 ~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y
 ```
 
-You may need to change the ID of the arduino in the launch file. To do this, open ~/l2bot_ws/src/l2bot/launch/l2bot.launch and change the line below.
+You may need to change the ID of the arduino in the launch file. To find the ID, **plug in the Arduino** and run the following
+
+```
+$ ls /dev/serial/by-id/
+
+```
+
+Open `~/l2bot_ws/src/l2bot/launch/l2bot.launch` and change the line below.
+
 
 ```
 <!-- Change the 'value' parameter of the line below -->
-<!-- run `ls /dev/serial/bi-id` to get the id of your Arduino -->
-<param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
+<param name="port" value="/dev/serial/by-id/YOUR_ID_HERE"/>
 ```
 
+For example, yours may be:
+```
+<!-- Change the 'value' parameter of the line below -->
+<param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
+```
 
 # Topics
 
