@@ -16,8 +16,10 @@ $ cd ~/l2bot_ws/src
 
   1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
   2. Open the IDE and close it once it has finished launching. (This creates all the scketchbook directories on your system)
-  3. Install ROS Support (see below)
-  4. Install `AFMotor` driver: [AFMotor](https://learn.adafruit.com/adafruit-motor-shield/library-install)
+  3. Add serial write permissions. Run `sudo usermod -a -G dialout terrik`
+  4. Restart Computer
+  5. Install ROS Support (see below)
+  6. Install `AFMotor` driver: [AFMotor](https://learn.adafruit.com/adafruit-motor-shield/library-install)
 
 ### Installing ROS Support
 
@@ -86,7 +88,7 @@ For example, yours may be:
 
   1. Open the Arduino IDE
   2. File > Open
-    - Open the file `d` located at ` ` 
+    - Open the file `` located at ` ` 
   3. Plug in the Arduino
   4. Tools -> Port -> (Select your arduino device)
   5. Upload to arduino
