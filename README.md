@@ -14,9 +14,28 @@ $ cd ~/l2bot_ws/src
 
 ## Arduino
 
-Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
+  2. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
+  2. Open the IDE and close it once it has finished launching. (This creates all the scketchbook directories on your system)
+  3. Install ROS Support (see below)
 
-Install ROS Support: [Arduino Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
+### Installing ROS Support
+
+[Arduino Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
+
+Make sure to replace `indigo` with `kinetic` when executing commands. For example, if the pages says to run the command
+
+```
+sudo apt-get install ros-indigo-rosserial-arduino
+```
+
+then you should run the command
+
+```
+sudo apt-get install ros-kinetic-rosserial-arduino
+```
+
+
+
 
 ## ROS
 
@@ -32,12 +51,13 @@ Run `catkin_make` from the workspace directory.
 ```
 ~/l2bot_ws/src$ cd ..
 ~/l2bot_ws$ catkin_make
+~/l2bot_ws$ source devel/setup.sh
 ```
 
 Install dependencies
 
 ```
-~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y 
+~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y
 ```
 
 You may need to change the ID of the arduino in the launch file. To do this, open ~/l2bot_ws/src/l2bot/launch/l2bot.launch and change the line below.
