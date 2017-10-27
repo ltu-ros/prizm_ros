@@ -4,6 +4,17 @@ ROS interface package for converting the output of `/rb_drive/rb_drive/twist_cmd
 
 # Installation
 
+Contents (details below):
+
+  1. Setup a ROS  workspace
+  2. Install Arduino IDE and ROS support
+  3. Clone this repo into your workspace
+  4. Upload the motor controller sketch to the Arduino
+  4. Point the ROS node to your board
+
+
+## 1. Setup Workspace
+
 If you haven't already, create a catkin workspace.
 
 ```
@@ -12,14 +23,13 @@ $ cd ~/l2bot_ws/src
 ```
 
 
-## Arduino
+## 2. Arduino
 
   1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
   2. Open the IDE and close it once it has finished launching. (This creates all the scketchbook directories on your system)
   3. Add serial write permissions. Run `sudo usermod -a -G dialout <UNAME>` where `<UNAME>` is your username.
   4. Restart Computer
   5. Install ROS Support (see below)
-  6. Install `AFMotor` driver: [AFMotor](https://learn.adafruit.com/adafruit-motor-shield/library-install)
 
 ### Installing ROS Support
 
@@ -40,7 +50,7 @@ sudo apt-get install ros-kinetic-rosserial-arduino
 
 
 
-## ROS
+## 3. ROS
 
 
 Clone this repository into the `src` directory.
@@ -54,7 +64,7 @@ Run `catkin_make` from the workspace directory.
 ```
 ~/l2bot_ws/src$ cd ..
 ~/l2bot_ws$ catkin_make
-~/l2bot_ws$ source devel/setup.sh
+~/l2bot_ws$ source devel/setup.bash
 ```
 
 Install dependencies
@@ -62,6 +72,18 @@ Install dependencies
 ```
 ~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y
 ```
+
+## 4. Load The Interface onto the Arduino
+
+  1. Open the Arduino IDE
+  2. File > Open
+    - Open the file `L2Bot_MC.ino` located at `~/l2bot_ws/src/arduino/L2Bot_MC/` 
+  3. Plug in the Arduino
+  4. Tools -> Port -> (Select your arduino device)
+  5. Upload to arduino
+
+
+## 5. Identify Your Arduino Board
 
 You may need to change the ID of the arduino in the launch file. To find the ID, **plug in the Arduino** and run the following
 
@@ -84,14 +106,7 @@ For example, yours may be:
 <param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
 ```
 
-## Load The Interface onto the Arduino
 
-  1. Open the Arduino IDE
-  2. File > Open
-    - Open the file `L2Bot_MC.ino` located at `~/l2bot_ws/src/arduino/L2Bot_MC/` 
-  3. Plug in the Arduino
-  4. Tools -> Port -> (Select your arduino device)
-  5. Upload to arduino
 # Topics
 
 ## Published topics for internal use
