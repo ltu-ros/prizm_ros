@@ -85,27 +85,12 @@ Install dependencies
 
 ## 5. Identify Your Arduino Board
 
-You may need to change the ID of the arduino in the launch file. To find the ID, **plug in the Arduino** and run the following
+  1. Plug in your Arduino
+  2. Execute the `detect_arduino.py` script
 
 ```
-$ ls /dev/serial/by-id/
-
+./detect_arduino.py
 ```
-
-Open `~/l2bot_ws/src/l2bot/launch/l2bot.launch` and change the line below.
-
-
-```
-<!-- Change the 'value' parameter of the line below -->
-<param name="port" value="/dev/serial/by-id/YOUR_ID_HERE"/>
-```
-
-For example, yours may be:
-```
-<!-- Change the 'value' parameter of the line below -->
-<param name="port" value="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_64934333235351404262-if00"/>
-```
-
 
 # Topics
 
