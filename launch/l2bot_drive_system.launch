@@ -1,7 +1,0 @@
-<launch>
-
-    <include file="$(find rb_drive)/launch/drive_system.launch" />
-
-    <include file="$(find l2bot)/launch/l2bot.launch" />
-
-</launch>
