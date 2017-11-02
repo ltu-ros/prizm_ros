@@ -24,7 +24,7 @@ elif len(ids) > 1:
 board = ids[0]
 
 # Verify that it is actually a board
-if re.search('usb-Arduino__www.arduino.cc__.*', board) is None:
+if re.search('usb-Arduino_.*', board) is None:
     print('Non-arduino board detected: %s' % board)
     print('Would you like to use this id anyway? [y/n]: ', end='')
     choice = raw_input().lower()
@@ -40,7 +40,7 @@ contents = launch.read()
 launch.close()
 
 # Find the start and end index of the board id
-startidx = contents.find('usb-Arduino__')
+startidx = contents.find('usb-Arduino_')
 endidx = contents.find('"', startidx)
 oldboard = contents[startidx:endidx]
 
