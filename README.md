@@ -89,7 +89,7 @@ Install dependencies
   2. Execute the `detect_arduino.py` script
 
 ```
-./detect_arduino.py
+l2bot_ws/src/l2bot$ ./detect_arduino.py
 ```
 
 # Topics
