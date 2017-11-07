@@ -78,14 +78,14 @@ Install dependencies
   1. Open the Arduino IDE
   2. File > Open
     - Open the file `L2Bot_MC.ino` located at `~/l2bot_ws/src/arduino/L2Bot_MC/` 
-  3. Plug in the Arduino
+  3. Plug in the Arduino and turn on the L2Bot
   4. Tools -> Port -> (Select your arduino device)
   5. Upload to arduino
 
 
 ## 5. Identify Your Arduino Board
 
-  1. Plug in your Arduino
+  1. Plug in your Arduino and turn on the L2Bot
   2. Execute the `detect_arduino.py` script
 
 ```
