@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(l2bot)
+project(prizm)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 add_definitions(-std=c++11)
@@ -24,7 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES l2bot
+#  LIBRARIES prizm
 #  CATKIN_DEPENDS geometry_msgs roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -44,9 +44,9 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(l2bot src/l2bot.cpp)
+add_executable(twist_controller src/twist_controller.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(l2bot
+target_link_libraries(twist_controller
   ${catkin_LIBRARIES}
 )

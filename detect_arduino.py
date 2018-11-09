@@ -5,7 +5,7 @@ from __future__ import print_function
 import re
 import os
 
-launch_file_path = 'launch/l2bot.launch'
+launch_file_path = 'launch/prizm.launch'
 
 # Get the new id
 try:
@@ -24,15 +24,7 @@ elif len(ids) > 1:
 board = ids[0]
 
 # Verify that it is actually a board
-if re.search('usb-Arduino_.*', board) is None:
-    print('Non-arduino board detected: %s' % board)
-    print('Would you like to use this id anyway? [y/n]: ', end='')
-    choice = raw_input().lower()
-    if not choice == 'y' and not choice == 'yes':
-        print('Script aborted')
-        exit(1)
-else:
-    print('Board detected: %s' % board)
+print('Board detected: %s' % board)
 
 # Open the launch file
 launch = open(launch_file_path)
@@ -40,7 +32,8 @@ contents = launch.read()
 launch.close()
 
 # Find the start and end index of the board id
-startidx = contents.find('usb-Arduino_')
+# len('by-id/') == 6
+startidx = contents.find('by-id/usb-') + 6
 endidx = contents.find('"', startidx)
 oldboard = contents[startidx:endidx]
 

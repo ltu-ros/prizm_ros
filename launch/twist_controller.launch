@@ -1,0 +1,15 @@
+<launch>
+
+    <group ns="prizm">
+        <!-- Load params -->
+        <rosparam command="load" file="$(find prizm)/config/params.yaml" />
+
+        <!-- twist controller node -->
+        <node name="twist_controller" pkg="prizm" type="twist_controller" />
+
+        <!--- Launch PRIZM controller -->
+        <include file="$(find prizm)/launch/prizm.launch" />
+
+    </group>
+
+</launch>

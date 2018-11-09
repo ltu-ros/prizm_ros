@@ -1,8 +1,42 @@
-# l2bot
+# `prizm_ros`
 
-ROS interface package for converting the output of `/rb_drive/rb_drive/twist_cmd` to a motor controller command and sending it to an L2Bot.
+Unofficial ROS interface package for Tetrix PRIZM motor controller. See below for setup/installation
 
-# Installation
+
+## Interfaces
+
+### `prizm`
+
+![Prizm Topics](doc/prizm.png)
+
+```
+$ roslaunch prizm prizm.launch
+```
+
+This launch file provides the basic motor controller functionality  
+
+Topics:
+
+  - Publish a `geometry_msgs::Point` on `~/motor_cmd` as the motor controller instruction
+    - `x`: motor 1, `y`: motor 2
+    - `x` and `y` values must range from `-100` to `100`
+  - Publish a `std_msgs::Bool` on `~/red_led` to set the state of the red LED
+  - Publish a `std_msgs::Bool` on `~/green_led` to et the state of the green LED
+
+### `twist_controller`
+
+![Twist controller topics](doc/prizm_twist.png)
+
+This launch file converts twist messages into direct motor commands.
+
+Topics:
+
+    - Publish a `geometry_msgs::Twist` on `~/twist_controller/twist_cmd` to drive the robot
+      - `twist.linear.x`: forward/backward velocity
+      - `twist.angular.z`: right/left velocity
+
+
+# Setup and Installation
 
 Contents (details below):
 
@@ -18,8 +52,8 @@ Contents (details below):
 If you haven't already, create a catkin workspace.
 
 ```
-$ mkdir -p ~/l2bot_ws/src
-$ cd ~/l2bot_ws/src
+$ mkdir -p ~/prizm_ws/src
+$ cd ~/prizm_ws/src
 ```
 
 
@@ -30,6 +64,7 @@ $ cd ~/l2bot_ws/src
   3. Add serial write permissions. Run `sudo usermod -a -G dialout <UNAME>` where `<UNAME>` is your username.
   4. Restart Computer
   5. Install ROS Support (see below)
+  6. Install PRIZM Libraries (follow instructions on [official PRIZM page](https://www.pitsco.com/TETRIX-PRIZM-Component-Set/&TXredir=1))
 
 ### Installing ROS Support
 
@@ -48,52 +83,45 @@ sudo apt-get install ros-kinetic-rosserial-arduino
 ```
 
 
-
-
 ## 3. ROS
 
 
 Clone this repository into the `src` directory.
 
 ```
-~/l2bot_ws/src$ git clone https://github.com/LTU-AutoEV/l2bot.git
+~/prizm_ws/src$ git clone https://github.com/LTU-AutoEV/prizm_ros.git
 ```
 
 Run `catkin_make` from the workspace directory.
 
 ```
-~/l2bot_ws/src$ cd ..
-~/l2bot_ws$ catkin_make
-~/l2bot_ws$ source devel/setup.bash
+~/prizm_ws/src$ cd ..
+~/prizm_ws$ catkin_make
+~/prizm_ws$ source devel/setup.bash
 ```
 
 Install dependencies
 
 ```
-~/l2bot_ws$ rosdep install --from-paths src --ignore-src -r -y
+~/prizm_ws$ rosdep install --from-paths src --ignore-src -r -y
 ```
 
 ## 4. Load The Interface onto the Arduino
 
   1. Open the Arduino IDE
   2. File > Open
-    - Open the file `L2Bot_MC.ino` located at `~/l2bot_ws/src/arduino/L2Bot_MC/` 
-  3. Plug in the Arduino and turn on the L2Bot
+    - Open the file `PRIZM_MC.ino` located at `~/prizm_ros/arduino/prizm_MC/` 
+  3. Plug in the Arduino and turn on the prizm
   4. Tools -> Port -> (Select your arduino device)
   5. Upload to arduino
 
 
 ## 5. Identify Your Arduino Board
 
-  1. Plug in your Arduino and turn on the L2Bot
+  1. Plug in your Arduino and turn on the prizm
   2. Execute the `detect_arduino.py` script
 
 ```
-l2bot_ws/src/l2bot$ ./detect_arduino.py
+prizm_ws/src/prizm$ ./detect_arduino.py
 ```
 
-# Topics
-
-## Published topics for internal use
-
-  - `std_msgs::UInt16` on **/L2Bot/mc**: Motor controller instruction for the l2bot
