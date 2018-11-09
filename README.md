@@ -21,7 +21,7 @@ Topics:
     - `x`: motor 1, `y`: motor 2
     - `x` and `y` values must range from `-100` to `100`
   - Publish a `std_msgs::Bool` on `~/red_led` to set the state of the red LED
-  - Publish a `std_msgs::Bool` on `~/green_led` to et the state of the green LED
+  - Publish a `std_msgs::Bool` on `~/green_led` to set the state of the green LED
 
 ### `twist_controller`
 
@@ -31,9 +31,9 @@ This launch file converts twist messages into direct motor commands.
 
 Topics:
 
-    - Publish a `geometry_msgs::Twist` on `~/twist_controller/twist_cmd` to drive the robot
-      - `twist.linear.x`: forward/backward velocity
-      - `twist.angular.z`: right/left velocity
+  - Publish a `geometry_msgs::Twist` on `~/twist_controller/twist_cmd` to drive the robot
+    - `twist.linear.x`: forward/backward velocity
+    - `twist.angular.z`: right/left velocity
 
 
 # Setup and Installation
