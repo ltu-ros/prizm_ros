@@ -54,8 +54,8 @@ void PrizmTwistCtl::driveCB(const geometry_msgs::Twist& twist)
 {
     static constexpr double scale = 100.0;
 
-    double Aspeed = twist.linear.x;
-    double Bspeed = twist.linear.x;
+    double Aspeed = -twist.linear.x;
+    double Bspeed = -twist.linear.x;
     bool Adir = true;
     bool Bdir = true;
 
