@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="prizm_ros" type="led_sim" name="led_sim" output="screen" launch-prefix="xterm -e" />
+
+</launch>
