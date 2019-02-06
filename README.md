@@ -51,7 +51,9 @@ Contents (details below):
 
 ## 1. Setup Workspace
 
-If you haven't already, create a catkin workspace.
+If you already have a worksapce, skip this step.
+
+Create a catkin workspace.
 
 ```
 $ mkdir -p ~/prizm_ws/src
@@ -61,12 +63,7 @@ $ cd ~/prizm_ws/src
 
 ## 2. Arduino
 
-  1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
-  2. Open the IDE and close it once it has finished launching. (This creates all the scketchbook directories on your system)
-  3. Add serial write permissions. Run `sudo usermod -a -G dialout <UNAME>` where `<UNAME>` is your username.
-  4. Restart Computer
-  5. Install ROS Support (see below)
-  6. Install PRIZM Libraries (follow instructions on [official PRIZM page](https://www.pitsco.com/TETRIX-PRIZM-Component-Set/&TXredir=1))
+Follow instructions [here](https://www.arduino.cc/en/guide/linux) to download ans install Arduino.
 
 ## 3. Installing ROS Support
 
@@ -131,4 +128,20 @@ Install dependencies
 ```
 prizm_ws/src/prizm$ ./detect_arduino.py
 ```
+
+## 8. Test PRIZM
+
+```
+catkin_make
+source devel/setup.bash
+roslaunch prizm_ros prizm.launch
+```
+
+Press the green button on the PRIZM after every `roslaunch`
+
+Run `rostopic list`. You should see `/green_led` and `/red_led` topics.
+
+
+
+
 
