@@ -41,10 +41,12 @@ Topics:
 Contents (details below):
 
   1. Setup a ROS  workspace
-  2. Install Arduino IDE and ROS support
-  3. Clone this repo into your workspace
-  4. Upload the motor controller sketch to the Arduino
-  4. Point the ROS node to your board
+  2. Install Arduino IDE
+  3. Install ROS libs
+  4. Install PRIZM libs
+  5. Clone this repo into your workspace
+  6. Upload the motor controller sketch to the Arduino
+  7. Point the ROS node to your board
 
 
 ## 1. Setup Workspace
@@ -66,7 +68,7 @@ $ cd ~/prizm_ws/src
   5. Install ROS Support (see below)
   6. Install PRIZM Libraries (follow instructions on [official PRIZM page](https://www.pitsco.com/TETRIX-PRIZM-Component-Set/&TXredir=1))
 
-### Installing ROS Support
+## 3. Installing ROS Support
 
 [Arduino Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
@@ -82,8 +84,13 @@ then you should run the command
 sudo apt-get install ros-kinetic-rosserial-arduino
 ```
 
+## 4. Install PRIZM libs
 
-## 3. ROS
+Download library from here: https://www.pitsco.com/TETRIX-PRIZM-Robotics-Controller
+
+Unzip and place library in ~/Arduino/libraries
+
+## 5. PRIZM package
 
 
 Clone this repository into the `src` directory.
@@ -106,7 +113,7 @@ Install dependencies
 ~/prizm_ws$ rosdep install --from-paths src --ignore-src -r -y
 ```
 
-## 4. Load The Interface onto the Arduino
+## 6. Load The Interface onto the Arduino
 
   1. Open the Arduino IDE
   2. File > Open
@@ -116,7 +123,7 @@ Install dependencies
   5. Upload to arduino
 
 
-## 5. Identify Your Arduino Board
+## 7. Identify Your Arduino Board
 
   1. Plug in your Arduino and turn on the prizm
   2. Execute the `detect_arduino.py` script
