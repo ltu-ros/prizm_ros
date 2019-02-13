@@ -2,13 +2,13 @@
 
     <group ns="prizm">
         <!-- Load params -->
-        <rosparam command="load" file="$(find prizm)/config/params.yaml" />
+        <rosparam command="load" file="$(find prizm_ros)/config/params.yaml" />
 
         <!-- twist controller node -->
-        <node name="twist_controller" pkg="prizm" type="twist_controller" />
+        <node name="twist_controller" pkg="prizm_ros" type="twist_controller" />
 
         <!--- Launch PRIZM controller -->
-        <include file="$(find prizm)/launch/prizm.launch" />
+        <include file="$(find prizm_ros)/launch/prizm.launch" />
 
     </group>
 
