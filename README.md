@@ -32,8 +32,8 @@ This launch file converts twist messages into direct motor commands.
 Topics:
 
   - Publish a `geometry_msgs::Twist` on `~/twist_controller/twist_cmd` to drive the robot
-    - `twist.linear.x`: forward/backward velocity
-    - `twist.angular.z`: right/left velocity
+    - `twist.linear.x`: forward/backward velocity (-3.0 to 3.0)
+    - `twist.angular.z`: right/left velocity (-1.5 to 1.5) (approx radians)
 
 
 # Setup and Installation
