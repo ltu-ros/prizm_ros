@@ -114,7 +114,7 @@ Install dependencies
 
   1. Open the Arduino IDE
   2. File > Open
-    - Open the file `PRIZM_MC.ino` located at `~/prizm_ros/arduino/prizm_MC/` 
+    - Open the file `PRIZM_MC.ino` located at `~/prizm_ros/arduino/PRIZM/PRIZM_MC/` 
   3. Plug in the Arduino and turn on the prizm
   4. Tools -> Port -> (Select your arduino device)
   5. Upload to arduino
