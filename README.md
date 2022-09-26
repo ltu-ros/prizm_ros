@@ -63,7 +63,7 @@ $ cd ~/prizm_ws/src
 
 ## 2. Arduino
 
-Follow instructions [here](https://www.arduino.cc/en/guide/linux) to download and install Arduino IDE. **Note: Download legacy IDE 1.8.X, not 2.0.0.**
+Follow instructions [here](https://www.arduino.cc/en/guide/linux) to download and install Arduino IDE. *Note: Download legacy IDE 1.8.X, not 2.0.0.*
 
 ## 3. Installing ROS Support
 
