@@ -83,7 +83,7 @@ sudo apt-get install ros-noetic-rosserial-arduino
 
 ## 4. Install PRIZM libs
 
-Download library from here: https://www.pitsco.com/TETRIX-PRIZM-Robotics-Controller
+Download TETRIX PRIZM library from here: https://www.pitsco.com/TETRIX-PRIZM-Robotics-Controller
 
 Unzip and place library in ~/Arduino/libraries
 
