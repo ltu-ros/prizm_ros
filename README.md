@@ -123,10 +123,10 @@ Install dependencies
 ## 7. Identify Your Arduino Board
 
   1. Plug in your Arduino and turn on the prizm
-  2. Execute the `detect_arduino.py` script
+  2. Execute the `detect_arduino.py` script. (If you are using Unbuntu 20.4 or newer, change the 1st line of the detect_arduino.py file from python to python3
 
 ```
-prizm_ws/src/prizm$ ./detect_arduino.py
+prizm_ws/src/prizm_ros$ ./detect_arduino.py
 ```
 
 ## 8. Test PRIZM
