@@ -69,16 +69,16 @@ Follow instructions [here](https://www.arduino.cc/en/guide/linux) to download an
 
 [Arduino Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
-Make sure to replace `indigo` with `kinetic` when executing commands. For example, if the pages says to run the command
+Make sure to replace `indigo` with `noetic` when executing commands. For example, if the pages says to run the command
 
 ```
-sudo apt-get install ros-indigo-rosserial-arduino
+sudo apt-get install ros-noetic-rosserial-arduino
 ```
 
 then you should run the command
 
 ```
-sudo apt-get install ros-kinetic-rosserial-arduino
+sudo apt-get install ros-noetic-rosserial-arduino
 ```
 
 ## 4. Install PRIZM libs
