@@ -1,0 +1,15 @@
+<launch>
+
+    <group ns="prizm">
+        <!-- Load params -->
+        <rosparam command="load" file="$(find prizm_ros)/config/params.yaml" />
+
+        <!-- twist controller node -->
+        <node name="threshold_controller" pkg="prizm_ros" type="threshold_controller" />
+
+        <!--- Launch PRIZM controller -->
+        <include file="$(find prizm_ros)/launch/prizm.launch" />
+
+    </group>
+
+</launch>

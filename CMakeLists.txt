@@ -11,7 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   std_msgs
+  dynamic_reconfigure
 )
+
+generate_dynamic_reconfigure_options(cfg/Twist.cfg)
 
 ###################################
 ## catkin specific configuration ##
@@ -38,6 +41,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${dynamic_reconfigure_PACKAGE_PATH}/cmake/cfgbuild.cmake
 )
 
 
@@ -45,8 +49,10 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(twist_controller src/twist_controller.cpp)
+add_executable(threshold_twist src/threshold_twist.cpp)
 add_executable(led_sim src/led_sim.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(twist_controller ${catkin_LIBRARIES})
+target_link_libraries(threshold_twist ${catkin_LIBRARIES})
 target_link_libraries(led_sim ${catkin_LIBRARIES})
