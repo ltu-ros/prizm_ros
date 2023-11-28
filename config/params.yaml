@@ -1,1 +1,5 @@
 turn_multip: 2.0
+min_linear: 0.4
+max_linear: 1.0
+min_angular: 0.2
+max_angular: 1.0
