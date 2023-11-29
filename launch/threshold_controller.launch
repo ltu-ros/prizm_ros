@@ -5,7 +5,7 @@
         <rosparam command="load" file="$(find prizm_ros)/config/params.yaml" />
 
         <!-- twist controller node -->
-        <node name="threshold_controller" pkg="prizm_ros" type="threshold_controller" />
+        <node name="threshold_controller" pkg="prizm_ros" type="threshold_twist" />
 
         <!--- Launch PRIZM controller -->
         <include file="$(find prizm_ros)/launch/prizm.launch" />
